@@ -1,8 +1,9 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, Response, Path, Header, Depends
 from model import Digital_solutions_11
-from typing import Optional
+from typing import Optional, Any, List
+import requests
 
-app = FastAPI()  #Variável que armazena e instância a classe FastAPI
+app = FastAPI(title='DS11', version="0.0.1", description="API of Students.")  #Variável que armazena e instância a classe FastAPI
 
 students = {
     1:{
@@ -30,16 +31,33 @@ students = {
     }
 }
 
+def fake_db():
+    try:
+        print('Conecting DB...')
+
+    finally:
+        print('Closing DB...')
+
+@app.get("/pokemon/{name}")
+async def get_pokemon(name: str):
+    response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{name}")
+
+    if response.status_code == 200:
+        pokemon_data = response.json()
+        return pokemon_data
+    else:
+        return {'Msg': 'Deu ruim'}
+
 @app.get("/")
 async def beginning():  #Função assíncriona
     return {"Message": "Hello DS11"}  #O que a função retorna
 
-@app.get("/students")
-async def get_students_ds11():
+@app.get("/students", summary="Return all students.", response_model=List[Digital_solutions_11])
+async def get_students_ds11(db: Any = Depends(fake_db)):
     return students
 
 @app.get("/students/{student_id}")
-async def get_student_ds11(student_id: int):
+async def get_student_ds11(student_id: int = Path(..., title='Student ID', description='O ID deve ser entre 1 e 3', gt=0, lt=4)):
     try:
         student = students[student_id]
         return student
@@ -47,7 +65,7 @@ async def get_student_ds11(student_id: int):
     except KeyError:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Student not found.")
     
-@app.post("/students", status_code=status.HTTP_201_CREATED)
+@app.post("/students", status_code=status.HTTP_201_CREATED, description="Create new student.")
 async def post_students_ds11(student: Optional[Digital_solutions_11] = None):
     try:
         next_id = len(students) + 1
@@ -67,9 +85,26 @@ async def put_students_ds11(student_id: int, student: Digital_solutions_11):
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Student not found.")
     
-# @app.delete("/students/{student_id}")
-# async def delete_students_ds11(student_id: int):
+@app.delete("/students/{student_id}")
+async def delete_student_ds11(student_id: int):
+    if student_id in students:
+        del students[student_id]
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    else:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Student not found.")
+    
+# Query
+@app.get("/calculadora")
+async def cacular(n1: int, n2: int):
+    soma = n1 + n2
+    return {"Resultado": soma}
 
+# Header
+@app.get("/ds11")
+async def exHeader(msg: str = Header(...)):
+    return{f"Message": {msg}}
+
+# 
 
 
 if __name__ == "__main__":  #É o que vai executar o servidor sem que precise usar o terminal toda vez.

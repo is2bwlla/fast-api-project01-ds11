@@ -1,0 +1,55 @@
+Blue Whale (Balaenoptera musculus)
+
+Nome em Português: Baleia Azul
+Maximum Length: Up to 100 feet (30 meters)
+Maximum Weight: Up to 200 tons
+Bowhead Whale (Balaena mysticetus)
+
+Nome em Português: Baleia de Cabeça Grande ou Baleia-Bowhead
+Maximum Length: Up to 66 feet (20 meters)
+Maximum Weight: Up to 100 tons
+Bryde's Whale (Balaenoptera brydei)
+
+Nome em Português: Baleia de Bryde
+Maximum Length: Up to 55 feet (17 meters)
+Maximum Weight: Up to 25 tons
+Common Minke Whale (Balaenoptera acutorostrata)
+
+Nome em Português: Baleia Minke Comum
+Maximum Length: Up to 35 feet (10.7 meters)
+Maximum Weight: Up to 10 tons
+Dwarf Sperm Whale (Kogia sima)
+
+Nome em Português: Cachalote-Anão
+Maximum Length: Up to 9 feet (2.7 meters)
+Maximum Weight: Up to 1.5 tons
+Fin Whale (Balaenoptera physalus)
+
+Nome em Português: Baleia Fin
+Maximum Length: Up to 85 feet (26 meters)
+Maximum Weight: Up to 80 tons
+Gray Whale (Eschrichtius robustus)
+
+Nome em Português: Baleia-Cinza
+Maximum Length: Up to 49 feet (15 meters)
+Maximum Weight: Up to 36 tons
+Humpback Whale (Megaptera novaeangliae)
+
+Nome em Português: Baleia-Jubarte
+Maximum Length: Up to 60 feet (18 meters)
+Maximum Weight: Up to 40 tons
+North Atlantic Right Whale (Eubalaena glacialis)
+
+Nome em Português: Baleia-Franca-Norte
+Maximum Length: Up to 55 feet (17 meters)
+Maximum Weight: Up to 70 tons
+Pygmy Sperm Whale (Kogia breviceps)
+
+Nome em Português: Cachalote-Pigmeu
+Maximum Length: Up to 8.5 feet (2.6 meters)
+Maximum Weight: Up to 1 ton
+Sei Whale (Balaenoptera borealis)
+
+Nome em Português: Baleia-Sei
+Maximum Length: Up to 65 feet (20 meters)
+Maximum Weight: Up to 30 tons
