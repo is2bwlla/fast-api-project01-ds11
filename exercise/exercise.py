@@ -86,6 +86,8 @@ species = {
     }
 }
 
+
+# GET:
 @app.get('/')
 async def beginning():
     return {'For whale': 'whales/id',
@@ -100,8 +102,36 @@ async def get_whale_id(whale_id: int):
     try:
         whale = species[whale_id]
         return whale
+    
     except KeyError:
-        raise 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Whale not found.")
+
+
+# POST:
+@app.post('/whales', status_code=status.HTTP_201_CREATED, description="Add whale.")
+async def post_whales(whale: Optional[Whales] = None):
+    try:
+        next_id = len(species) + 1
+
+        species[next_id] = whale
+        del whale.id
+        return whale
+    
+    except KeyError:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="This whale already exists.")
+    
+
+# PUT:
+# @app.put('whales/{whale_id}', status_code=status.HTTP_202_ACCEPTED)
+# async def put_whales(whale_id: int, whale: Whales):
+#     if whale_id in species:
+#         species[whale_id] = whale
+#         whale.id = whale_id
+#         return whale
+    
+#     else:
+#         raise
+
 
 
 

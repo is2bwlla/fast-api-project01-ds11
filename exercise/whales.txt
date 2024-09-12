@@ -43,11 +43,15 @@ North Atlantic Right Whale (Eubalaena glacialis)
 Nome em Português: Baleia-Franca-Norte
 Maximum Length: Up to 55 feet (17 meters)
 Maximum Weight: Up to 70 tons
+
+
 Pygmy Sperm Whale (Kogia breviceps)
 
 Nome em Português: Cachalote-Pigmeu
 Maximum Length: Up to 8.5 feet (2.6 meters)
 Maximum Weight: Up to 1 ton
+
+
 Sei Whale (Balaenoptera borealis)
 
 Nome em Português: Baleia-Sei
