@@ -97,7 +97,7 @@ async def beginning():
 async def get_whales():
     return species
 
-@app.get('/whale/{whale_id}')
+@app.get('/whales/{whale_id}')
 async def get_whale_id(whale_id: int):
     try:
         whale = species[whale_id]
@@ -122,19 +122,25 @@ async def post_whales(whale: Optional[Whales] = None):
     
 
 # PUT:
-# @app.put('whales/{whale_id}', status_code=status.HTTP_202_ACCEPTED)
-# async def put_whales(whale_id: int, whale: Whales):
-#     if whale_id in species:
-#         species[whale_id] = whale
-#         whale.id = whale_id
-#         return whale
+@app.put('/whales/{whale_id}', status_code=status.HTTP_202_ACCEPTED)
+async def put_whales(whale_id: int, whale: Whales):
+    if whale_id in species:
+        species[whale_id] = whale
+        whale.id = whale_id
+        return whale
     
-#     else:
-#         raise
-
-
-
-
+    else:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Whale no found.")
+    
+# DELETE:
+@app.delete("/whales/{whale_id}")
+async def delete_whale(whale_id: int):
+    if whale_id in species:
+        del species[whale_id]
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    
+    else:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Whale not found.")
 
 
 if __name__ == "__main__":
