@@ -141,6 +141,16 @@ async def delete_whale(whale_id: int):
     
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Whale not found.")
+    
+
+# DESAFIO 01: MÉTODO PATCH
+
+@app.patch("/whale/{whale_id}", response_model=Whales)
+async def patch_whale(whale_id: int, atr_update=Whales):
+    if whale_id not in species:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Whale not found.")
+    
+    if whale_id 
 
 
 if __name__ == "__main__":
